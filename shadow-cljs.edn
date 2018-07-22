@@ -8,7 +8,9 @@
                 [day8.re-frame/tracing-stubs "0.5.1"]
                 [cider/cider-nrepl "0.16.0"]
                 [metosin/reitit-core "0.1.3"]
-                [venantius/accountant "0.2.4"]]
+                [venantius/accountant "0.2.4"]
+
+                [metosin/reitit "0.1.4-SNAPSHOT"]]
 
  ;; set an nrepl port for connection to a REPL.
  :nrepl {:port 8777}

@@ -13,7 +13,7 @@
     "shadow-start": "shadow-cljs start",
     "shadow-stop": "shadow-cljs stop",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/css/ --include-path ./node_modules src/ -o public/ --watch --recursive",
-    "watch-dev": "shadow-cljs watch dev;",
+    "watch-dev": "shadow-cljs watch dev",
     "dev": "npm-run-all -p watch-css watch-dev",
     "repl": "echo 'write: (shadow/repl :dev) to get into the CLJS Repl.' && shadow-cljs clj-repl",
     "deploy": "yarn release && firebase deploy"
