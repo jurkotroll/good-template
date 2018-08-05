@@ -6,8 +6,16 @@
             ["uuid" :as random]))
 
 (def empty-db
-  {:window-width (oget js/window "innerWidth") 
-   :user {}})
+  {:window-width (oget js/window "innerWidth")
+   :user {}
+   :travels {"travel001" #:travel{:id "travel001"
+                                  :place "Jańskie"}
+             "travel002" #:travel{:id "travel002"
+                                  :place "Czarna Góra"}
+             "travel003" #:travel{:id "travel002"
+                                  :place "Czarna Góra"}
+             "travel004" #:travel{:id "travel002"
+                                  :place "Czarna Góra"}}})
 
 
 (rf/reg-event-db

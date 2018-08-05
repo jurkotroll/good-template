@@ -13,3 +13,9 @@
  (fn
    [db _]
    (:window-width db)))
+
+(rf/reg-sub
+ :travels
+ (fn
+   [db _]
+   (:travels db)))
