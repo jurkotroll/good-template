@@ -4,6 +4,7 @@
      [reitit.core :as re]
      [template.pages.frontpage :as pages.frontpage]
      [template.pages.travels :as pages.travels]
+     [template.pages.travelone :as pages.travelone]
      [reitit.coercion :as rc]
      [reitit.coercion.schema :as rsc]
      [schema.core :as s]
@@ -43,6 +44,7 @@
    [:ul
     [:li [:a {:href (rfe/href ::frontpage)} "Frontpage"]]
     [:li [:a {:href (rfe/href ::travels-page)} "List of travels"]]
+    [:li [:a {:href (rfe/href ::travelone)} "Travel001"]]
     [:li [:a {:href (rfe/href ::about)} "About"]]
     [:li [:a {:href (rfe/href ::my-profile)} "My Profile"]]
     [:li [:a {:href (rfe/href ::item {:id 1})} "Item 1"]]
@@ -61,6 +63,9 @@
      ["travels"
       {:name ::travels-page
        :view pages.travels/travels-page}]
+     ["travelone"
+      {:name ::travelone
+       :view pages.travelone/travel}]
      ["about"
       {:name ::about
        :view about-page}]

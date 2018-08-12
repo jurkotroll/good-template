@@ -12,10 +12,10 @@
                                   :place "Jańskie"}
              "travel002" #:travel{:id "travel002"
                                   :place "Czarna Góra"}
-             "travel003" #:travel{:id "travel002"
-                                  :place "Czarna Góra"}
-             "travel004" #:travel{:id "travel002"
-                                  :place "Czarna Góra"}}})
+             "travel003" #:travel{:id "travel003"
+                                  :place "Pec"}
+             "travel004" #:travel{:id "travel004"
+                                  :place "Roketnice"}}})
 
 
 (rf/reg-event-db
