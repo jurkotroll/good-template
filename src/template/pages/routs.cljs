@@ -54,6 +54,14 @@
        [view @match]))
    [:pre (with-out-str (fedn/pprint @match))]])
 
+(defn travel []
+ (let []
+   (fn []
+     [:div
+      [:h1 "Travel001"]
+      [:button {:on-click #(rfe/push-state ::travels-page)} "Back 1"]
+      [:a {:href (rfe/href ::travels-page)} "Back 2"]])))
+
 (def routes
   (re/router
     ["/"
@@ -65,7 +73,7 @@
        :view pages.travels/travels-page}]
      ["travelone"
       {:name ::travelone
-       :view pages.travelone/travel}]
+       :view travel}]
      ["about"
       {:name ::about
        :view about-page}]

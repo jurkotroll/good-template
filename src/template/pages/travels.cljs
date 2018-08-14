@@ -5,24 +5,32 @@
     ["@material-ui/core/ListItem" :default ListItem]
     ["@material-ui/core/ListItemText" :default ListItemText]
     ["@material-ui/core/ListItemSecondaryAction" :default ListItemSecondaryAction]
+    [reitit.frontend :as rf]
     [reitit.frontend.easy :as rfe]
+    [reitit.frontend.history :as rfh]
     ["@material-ui/core/Avatar" :default Avatar]
     #_["@material-ui/core/Link" :default Link]
     ["@material-ui/core/ButtonBase" :default ButtonBase]
+    ["@material-ui/core/Button" :default Button]
     [fipp.edn :as fedn]))
 
 (enable-console-print!)
 
-(defn travel-to-list [id place]
-  (let [open-travel (rfe/href ::travelone)]
-    [:a {:href open-travel}
-     [:> ListItem {:key id :button true :href open-travel}
-      [:> Avatar (first place)]
-      [:> ListItemText {:primary place}]
-      [:a {:href open-travel} "Open"]
-      #_[:> ListItemSecondaryAction]
-      ;; [:> ButtonBase
-        #_[:a {:href open-travel} "Open"]]]))
+(defn travel-to-list [id]
+  (let [open-travel #(rfe/push-state ::travelone)]
+   (fn []
+    [:button {:on-click #(rfe/push-state ::frontpage)} (str "Open " id)])))
+
+; (defn travel-to-list [id place]
+;   (let []
+;     [:> ListItem {:key id :button true :on-click #(rfe/push-state "travelone")}
+;
+;       [:> Avatar (first place)]
+;       [:> ListItemText {:primary place}]
+;       [:a {:href nil}
+;        [:> ListItemSecondaryAction
+;         [:> Button {`} "Open"]]]]))
+
 
 
 
@@ -30,10 +38,10 @@
 (defn list-of-travels [travels]
   (let [values (vals @travels)]
 
-    [:> List
-      (for [{:keys [travel/id travel/place]} values]
+    [:div
+      (for [{:keys [travel/id #_travel/place]} values]
        [:div
-         [travel-to-list id place]])]))
+         [travel-to-list id #_place]])]))
 
 
 
