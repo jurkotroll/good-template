@@ -16,20 +16,17 @@
 
 (enable-console-print!)
 
-(defn travel-to-list [id]
-  (let [open-travel #(rfe/push-state ::travelone)]
-   (fn []
-    [:button {:on-click #(rfe/push-state ::frontpage)} (str "Open " id)])))
 
-; (defn travel-to-list [id place]
-;   (let []
-;     [:> ListItem {:key id :button true :on-click #(rfe/push-state "travelone")}
-;
-;       [:> Avatar (first place)]
-;       [:> ListItemText {:primary place}]
-;       [:a {:href nil}
-;        [:> ListItemSecondaryAction
-;         [:> Button {`} "Open"]]]]))
+
+(defn travel-to-list [id place]
+  (let [open-travel #(rfe/push-state :travels/travel)]
+    [:> ListItem {:key id :button true :on-click open-travel}
+
+      [:> Avatar (first place)]
+      [:> ListItemText {:primary place}]
+      [:a {:href nil}
+       [:> ListItemSecondaryAction
+        [:> Button "Open"]]]]))
 
 
 
@@ -39,9 +36,9 @@
   (let [values (vals @travels)]
 
     [:div
-      (for [{:keys [travel/id #_travel/place]} values]
+      (for [{:keys [travel/id travel/place]} values]
        [:div
-         [travel-to-list id #_place]])]))
+         [travel-to-list id place]])]))
 
 
 

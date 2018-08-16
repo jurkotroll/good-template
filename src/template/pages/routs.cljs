@@ -4,7 +4,7 @@
      [reitit.core :as re]
      [template.pages.frontpage :as pages.frontpage]
      [template.pages.travels :as pages.travels]
-     [template.pages.travelone :as pages.travelone]
+     [template.pages.travel :as pages.travel]
      [reitit.coercion :as rc]
      [reitit.coercion.schema :as rsc]
      [schema.core :as s]
@@ -44,7 +44,7 @@
    [:ul
     [:li [:a {:href (rfe/href ::frontpage)} "Frontpage"]]
     [:li [:a {:href (rfe/href ::travels-page)} "List of travels"]]
-    [:li [:a {:href (rfe/href ::travelone)} "Travel001"]]
+    [:li [:a {:href (rfe/href ::travel)} "Travel001"]]
     [:li [:a {:href (rfe/href ::about)} "About"]]
     [:li [:a {:href (rfe/href ::my-profile)} "My Profile"]]
     [:li [:a {:href (rfe/href ::item {:id 1})} "Item 1"]]
@@ -54,14 +54,6 @@
        [view @match]))
    [:pre (with-out-str (fedn/pprint @match))]])
 
-(defn travel []
- (let []
-   (fn []
-     [:div
-      [:h1 "Travel001"]
-      [:button {:on-click #(rfe/push-state ::travels-page)} "Back 1"]
-      [:a {:href (rfe/href ::travels-page)} "Back 2"]])))
-
 (def routes
   (re/router
     ["/"
@@ -69,11 +61,11 @@
       {:name ::frontpage
        :view pages.frontpage/frontpage}]
      ["travels"
-      {:name ::travels-page
+      {:name :travels/listpage
        :view pages.travels/travels-page}]
-     ["travelone"
-      {:name ::travelone
-       :view travel}]
+     ["travel/:id"
+      {:name :travels/travel
+       :view pages.travel/travel}]
      ["about"
       {:name ::about
        :view about-page}]
